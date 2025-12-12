@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCS Website Reboot Plan | Gulf County Shipbuilding</title>
+    <style>
+        :root {
+            --navy: #1a365d;
+            --navy-light: #2c5282;
+            --gold: #d69e2e;
+            --gray-50: #f7fafc;
+            --gray-100: #edf2f7;
+            --gray-200: #e2e8f0;
+            --gray-600: #718096;
+            --gray-800: #2d3748;
+            --white: #ffffff;
+            --green: #38a169;
+            --red: #e53e3e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--gray-50);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header .subtitle {
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        header .meta {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .mission-box {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .mission-box blockquote {
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        h2 {
+            color: var(--navy);
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            color: var(--navy-light);
+            margin: 1.5rem 0 1rem;
+        }
+
+        h4 {
+            color: var(--gray-600);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .checklist li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--gray-200);
+            border-radius: 4px;
+            background: var(--white);
+        }
+
+        .checklist li.checked::before {
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        .checklist li.checked::after {
+            content: '\2713';
+            position: absolute;
+            left: 3px;
+            top: 0.5rem;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .checklist .sub-list {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        th {
+            background: var(--navy);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: var(--gray-50);
+        }
+
+        .phase-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .phase-1 { background: #c6f6d5; color: #22543d; }
+        .phase-2 { background: #bee3f8; color: #2a4365; }
+        .phase-3 { background: #faf089; color: #744210; }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .timeline-item {
+            background: var(--gray-100);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--navy);
+        }
+
+        .timeline-item h4 {
+            margin: 0 0 0.5rem;
+            color: var(--navy);
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid var(--gold);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .success-box {
+            background: #c6f6d5;
+            border-left: 4px solid var(--green);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .danger-box {
+            background: #fed7d7;
+            border-left: 4px solid var(--red);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        code {
+            background: var(--gray-100);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        .wireframe {
+            background: var(--gray-800);
+            color: var(--gray-100);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .toc {
+            background: var(--gray-100);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+        }
+
+        .toc ul {
+            list-style: none;
+            columns: 2;
+        }
+
+        .toc li {
+            padding: 0.25rem 0;
+        }
+
+        .toc a {
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .container { padding: 1rem; }
+            .card { padding: 1rem; }
+            .toc ul { columns: 1; }
+            table { font-size: 0.9rem; }
+            th, td { padding: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GCS Website Reboot Plan</h1>
+        <div class="subtitle">Gulf County Shipbuilding Revitalization</div>
+        <div class="meta">Document Version 1.0 | December 2025 | Draft for Review</div>
+    </header>
+
+    <div class="container">
+        <nav class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#executive-summary">Executive Summary</a></li>
+                <li><a href="#checklist">Progress Checklist</a></li>
+                <li><a href="#phase-1">Phase 1: Foundation</a></li>
+                <li><a href="#phase-2">Phase 2: Credibility</a></li>
+                <li><a href="#phase-3">Phase 3: Authority</a></li>
+                <li><a href="#guidelines">Content Guidelines</a></li>
+                <li><a href="#technical">Technical Requirements</a></li>
+                <li><a href="#assets">Asset Requirements</a></li>
+                <li><a href="#review">Stakeholder Review</a></li>
+            </ul>
+        </nav>
+
+        <section id="executive-summary" class="card">
+            <h2>Executive Summary</h2>
+            <p>This document outlines the strategic plan for relaunching the <strong>gcship.com</strong> website to support Gulf County Shipbuilding's revitalization initiative. The website must serve two distinct audiences:</p>
+            <ul>
+                <li><strong>Federal contracting officers</strong> (USCG, Navy)</li>
+                <li><strong>Commercial B2B buyers</strong> (barge operators, infrastructure companies)</li>
+            </ul>
+        </section>
+
+        <div class="mission-box">
+            <blockquote>
+                "To serve as the Gulf Coast's precision engineering hub, dedicated to the construction and sustainment of American vessels essential for national security and the growth of domestic maritime trade."
+            </blockquote>
+        </div>
+
+        <section id="checklist" class="card">
+            <h2>Top-Level Progress Checklist</h2>
+
+            <h3>Pre-Launch Requirements</h3>
+
+            <h4>Domain & Hosting</h4>
+            <ul class="checklist">
+                <li>Confirm gcship.com domain ownership and DNS access</li>
+                <li>Select and provision hosting platform</li>
+                <li>SSL certificate installed (HTTPS required)</li>
+            </ul>
+
+            <h4>Brand Assets</h4>
+            <ul class="checklist">
+                <li>GCS logo files (PNG, SVG)</li>
+                <li>Brand color palette defined</li>
+                <li>Typography selected</li>
+            </ul>
+
+            <h4>Photography & Visuals</h4>
+            <ul class="checklist">
+                <li>Executive headshot(s) - CEO (minimum)</li>
+                <li>Facility exterior photos</li>
+                <li>Pier/waterfront photos</li>
+                <li>Fabrication shop interior photos</li>
+                <li>Equipment photos (if available)</li>
+                <li>Hero banner image (facility or vessel)</li>
+            </ul>
+
+            <h4>Content Drafts</h4>
+            <ul class="checklist">
+                <li>Mission statement (finalized)</li>
+                <li>About Us / Company history narrative</li>
+                <li>Leadership bios</li>
+                <li>Service descriptions (MRO)</li>
+                <li>Service descriptions (New Build)</li>
+                <li>Compliance status statements</li>
+                <li>Vessel specification tables</li>
+            </ul>
+
+            <h3>Launch Phases</h3>
+            <ul class="checklist">
+                <li><strong>Phase 1 (Week 1-2):</strong> Homepage, About, Contact, Capabilities</li>
+                <li><strong>Phase 2 (Week 3-4):</strong> Compliance, Facilities, Target Vessels</li>
+                <li><strong>Phase 3 (Week 5-6):</strong> People/Careers, Case Studies, News</li>
+            </ul>
+        </section>
+
+        <section id="phase-1" class="card">
+            <h2>Phase 1: Foundation</h2>
+            <span class="phase-badge phase-1">Week 1-2</span>
+
+            <p><strong>Goal:</strong> Launch minimum viable site that captures leads and establishes presence.</p>
+
+            <h3>Pages to Launch</h3>
+            <table>
+                <tr>
+                    <th>Page</th>
+                    <th>Priority</th>
+                    <th>Purpose</th>
+                </tr>
+                <tr>
+                    <td><strong>Homepage</strong></td>
+                    <td>Critical</td>
+                    <td>First impression, dual CTAs, mission statement</td>
+                </tr>
+                <tr>
+                    <td><strong>About/Leadership</strong></td>
+                    <td>Critical</td>
+                    <td>Establishes credibility through team experience</td>
+                </tr>
+                <tr>
+                    <td><strong>Contact</strong></td>
+                    <td>Critical</td>
+                    <td>Lead capture with two-path inquiry forms</td>
+                </tr>
+                <tr>
+                    <td><strong>Capabilities</strong></td>
+                    <td>Critical</td>
+                    <td>Core service offerings</td>
+                </tr>
+            </table>
+
+            <h3>Homepage Wireframe</h3>
+            <div class="wireframe">+-------------------------------------------------------------+
+|  HEADER: Logo | Navigation | "Get a Quote" Button           |
++-------------------------------------------------------------+
+|                                                             |
+|  HERO SECTION                                               |
+|  +-------------------------------------------------------+  |
+|  |  Background: Facility/Vessel Image                    |  |
+|  |  Tagline: "Sustaining National Assets.                |  |
+|  |           Building Domestic Trade."                   |  |
+|  |  [View Our Capabilities] button                       |  |
+|  +-------------------------------------------------------+  |
+|                                                             |
+|  MISSION STATEMENT (Centered, prominent)                    |
+|                                                             |
+|  DUAL REVENUE CALLOUT                                       |
+|  +----------------------+  +----------------------+         |
+|  |  FEDERAL / MRO       |  |  COMMERCIAL          |         |
+|  |  "MSRA Tier 3        |  |  "Truckable Barges:  |         |
+|  |   Quality"           |  |   Built for          |         |
+|  |                      |  |   Efficiency"        |         |
+|  | [Federal Inquiry]    |  | [Request Specs]      |         |
+|  +----------------------+  +----------------------+         |
+|                                                             |
+|  TRUST BAR                                                  |
+|  Partner/Goal Logos: USCG | MARAD | Haney Tech | CMMC       |
+|                                                             |
++-------------------------------------------------------------+
+|  FOOTER: Contact Info | Quick Links | Copyright             |
++-------------------------------------------------------------+</div>
+
+            <h3>Contact Page: Two-Path Forms</h3>
+
+            <h4>Form 1: Government/Federal Inquiry</h4>
+            <ul>
+                <li>Organization name</li>
+                <li>Contact name & title</li>
+                <li>Email / Phone</li>
+                <li>Vessel type</li>
+                <li>Federal agency</li>
+                <li>Contract vehicle (MSRA / Other / Unknown)</li>
+                <li>Estimated timeline</li>
+                <li>Message</li>
+            </ul>
+
+            <h4>Form 2: Commercial/New Build Inquiry</h4>
+            <ul>
+                <li>Company name</li>
+                <li>Contact name & title</li>
+                <li>Email / Phone</li>
+                <li>Vessel type (dropdown: Truckable Barge, Dry Cargo Barge, Other)</li>
+                <li>Quantity</li>
+                <li>Delivery location</li>
+                <li>Message</li>
+            </ul>
+        </section>
+
+        <section id="phase-2" class="card">
+            <h2>Phase 2: Credibility Build</h2>
+            <span class="phase-badge phase-2">Week 3-4</span>
+
+            <p><strong>Goal:</strong> Add pages that federal procurement officers specifically evaluate.</p>
+
+            <h3>Pages to Launch</h3>
+            <table>
+                <tr>
+                    <th>Page</th>
+                    <th>Priority</th>
+                    <th>Purpose</th>
+                </tr>
+                <tr>
+                    <td><strong>Compliance & Certifications</strong></td>
+                    <td>High</td>
+                    <td>Federal contract eligibility proof</td>
+                </tr>
+                <tr>
+                    <td><strong>Facilities & Assets</strong></td>
+                    <td>High</td>
+                    <td>Physical capacity verification</td>
+                </tr>
+                <tr>
+                    <td><strong>Target Vessels</strong></td>
+                    <td>High</td>
+                    <td>Product/service specificity</td>
+                </tr>
+            </table>
+
+            <h3>Compliance Language Guide</h3>
+            <div class="warning-box">
+                <strong>CRITICAL:</strong> Use precise language for pending certifications
+            </div>
+
+            <table>
+                <tr>
+                    <th>Certification</th>
+                    <th>Status</th>
+                    <th>Display Language</th>
+                </tr>
+                <tr>
+                    <td>SAM.gov Registration</td>
+                    <td>Active</td>
+                    <td>"SAM.gov Registered - UEI: [NUMBER]"</td>
+                </tr>
+                <tr>
+                    <td>NAICS Codes</td>
+                    <td>Active</td>
+                    <td>"NAICS 336611 - Ship Building and Repairing"</td>
+                </tr>
+                <tr>
+                    <td>MSRA Tier 3</td>
+                    <td>Pursuing</td>
+                    <td>"Actively Pursuing MSRA Tier 3 Certification"</td>
+                </tr>
+                <tr>
+                    <td>CMMC Level 2</td>
+                    <td>In Progress</td>
+                    <td>"CMMC Level 2 Compliance Program Underway"</td>
+                </tr>
+                <tr>
+                    <td>DCAA Accounting</td>
+                    <td>Implemented</td>
+                    <td>"DCAA-Compliant Accounting System"</td>
+                </tr>
+            </table>
+
+            <h3>Facilities Specifications Table</h3>
+            <table>
+                <tr>
+                    <th>Asset</th>
+                    <th>Specification</th>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td>Gulf County, FL - Gulf Intracoastal Waterway Access</td>
+                </tr>
+                <tr>
+                    <td>Pier Length</td>
+                    <td>[X] feet</td>
+                </tr>
+                <tr>
+                    <td>Water Depth</td>
+                    <td>[X] feet at MLW</td>
+                </tr>
+                <tr>
+                    <td>Max Vessel Size</td>
+                    <td>80' LWL, 400 tons displacement</td>
+                </tr>
+                <tr>
+                    <td>Lift Capacity</td>
+                    <td>[Current] / [Post-MARAD Upgrade]</td>
+                </tr>
+                <tr>
+                    <td>Fabrication Shop</td>
+                    <td>[X] sq ft</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="phase-3" class="card">
+            <h2>Phase 3: Authority Building</h2>
+            <span class="phase-badge phase-3">Week 5-6</span>
+
+            <p><strong>Goal:</strong> Establish thought leadership and complete the site.</p>
+
+            <h3>Pages to Launch</h3>
+            <table>
+                <tr>
+                    <th>Page</th>
+                    <th>Priority</th>
+                    <th>Purpose</th>
+                </tr>
+                <tr>
+                    <td><strong>Our People/Careers</strong></td>
+                    <td>Medium</td>
+                    <td>Workforce pipeline story</td>
+                </tr>
+                <tr>
+                    <td><strong>Case Studies</strong></td>
+                    <td>Medium</td>
+                    <td>Proof of execution</td>
+                </tr>
+                <tr>
+                    <td><strong>News & Resources</strong></td>
+                    <td>Medium</td>
+                    <td>Ongoing authority building</td>
+                </tr>
+            </table>
+
+            <h3>Case Study Template</h3>
+            <div class="wireframe">PROJECT: [Vessel Name/Type]
+
+THE CHALLENGE:
+[Brief description of the problem/requirements]
+
+THE SOLUTION:
+[What GCS did - techniques, approach, innovation]
+
+THE RESULT:
+[Quantifiable outcomes - schedule, cost, quality metrics]
+
+KEY METRICS:
+- Completion: [X days early/on-time]
+- [Other relevant metrics]</div>
+        </section>
+
+        <section id="guidelines" class="card">
+            <h2>Content Writing Guidelines</h2>
+
+            <h3>Voice & Tone</h3>
+            <ul>
+                <li><strong>Professional</strong> but not stuffy</li>
+                <li><strong>Confident</strong> but not boastful</li>
+                <li><strong>Technical</strong> where appropriate</li>
+                <li><strong>Patriotic</strong> undertones (national security, American jobs)</li>
+            </ul>
+
+            <h3>Compliance Language Rules</h3>
+
+            <div class="success-box">
+                <strong>DO use:</strong>
+                <ul>
+                    <li>"Actively pursuing [certification]"</li>
+                    <li>"Compliance program underway"</li>
+                    <li>"[System] implemented"</li>
+                    <li>"Committed to achieving"</li>
+                </ul>
+            </div>
+
+            <div class="danger-box">
+                <strong>DON'T use:</strong>
+                <ul>
+                    <li>Claims of certifications not yet achieved</li>
+                    <li>"Certified" or "Compliant" without verification</li>
+                    <li>Vague or misleading status descriptions</li>
+                </ul>
+            </div>
+
+            <h3>SEO Target Keywords</h3>
+            <ul>
+                <li>Gulf Coast shipyard</li>
+                <li>Ship repair Florida</li>
+                <li>USCG vessel maintenance</li>
+                <li>Jones Act shipbuilder</li>
+                <li>Truckable barge manufacturer</li>
+                <li>Small vessel MRO</li>
+                <li>Florida shipbuilding</li>
+            </ul>
+        </section>
+
+        <section id="technical" class="card">
+            <h2>Technical Requirements</h2>
+
+            <h3>Platform Recommendations</h3>
+            <table>
+                <tr>
+                    <th>Requirement</th>
+                    <th>Recommendation</th>
+                </tr>
+                <tr>
+                    <td>CMS</td>
+                    <td>WordPress, Webflow, or Squarespace Business</td>
+                </tr>
+                <tr>
+                    <td>Hosting</td>
+                    <td>Reliable US-based hosting</td>
+                </tr>
+                <tr>
+                    <td>Security</td>
+                    <td>SSL/HTTPS mandatory, security headers</td>
+                </tr>
+                <tr>
+                    <td>Speed</td>
+                    <td>&lt;3 second load time</td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td>Fully responsive</td>
+                </tr>
+                <tr>
+                    <td>Forms</td>
+                    <td>Secure form handling, email notifications</td>
+                </tr>
+                <tr>
+                    <td>Analytics</td>
+                    <td>Google Analytics 4</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="assets" class="card">
+            <h2>Asset Requirements Summary</h2>
+
+            <h3>Photography Needed</h3>
+            <table>
+                <tr>
+                    <th>Asset</th>
+                    <th>Priority</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>CEO Headshot</td>
+                    <td>Critical</td>
+                    <td>Professional, business attire</td>
+                </tr>
+                <tr>
+                    <td>Facility Exterior</td>
+                    <td>Critical</td>
+                    <td>Ideally with vessel or water visible</td>
+                </tr>
+                <tr>
+                    <td>Pier/Waterfront</td>
+                    <td>High</td>
+                    <td>Shows deep-water access</td>
+                </tr>
+                <tr>
+                    <td>Fabrication Shop</td>
+                    <td>High</td>
+                    <td>Clean, organized appearance</td>
+                </tr>
+                <tr>
+                    <td>Equipment</td>
+                    <td>Medium</td>
+                    <td>Highlight capabilities</td>
+                </tr>
+                <tr>
+                    <td>Team/Workers</td>
+                    <td>Medium</td>
+                    <td>Safety gear, professional</td>
+                </tr>
+            </table>
+
+            <h3>Copy Needed</h3>
+            <table>
+                <tr>
+                    <th>Content</th>
+                    <th>Word Count</th>
+                    <th>Priority</th>
+                </tr>
+                <tr>
+                    <td>Mission Statement</td>
+                    <td>50</td>
+                    <td>Critical</td>
+                </tr>
+                <tr>
+                    <td>About Us</td>
+                    <td>300-500</td>
+                    <td>Critical</td>
+                </tr>
+                <tr>
+                    <td>Leadership Bios</td>
+                    <td>150-200 each</td>
+                    <td>Critical</td>
+                </tr>
+                <tr>
+                    <td>Service Descriptions</td>
+                    <td>200-300 each</td>
+                    <td>Critical</td>
+                </tr>
+                <tr>
+                    <td>Facility Description</td>
+                    <td>200-300</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Compliance Statements</td>
+                    <td>100-150 each</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Case Studies</td>
+                    <td>200-300 each</td>
+                    <td>Medium</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="review" class="card">
+            <h2>Stakeholder Review Questions</h2>
+            <p>Please provide feedback on the following:</p>
+            <ol>
+                <li><strong>Mission Statement:</strong> Does the proposed mission statement accurately reflect GCS's vision?</li>
+                <li><strong>Page Priority:</strong> Do you agree with the phased approach and page priorities?</li>
+                <li><strong>Compliance Language:</strong> Are the suggested status descriptions accurate for current certifications?</li>
+                <li><strong>Photography:</strong> What existing photos/assets are available? What needs to be scheduled?</li>
+                <li><strong>Leadership:</strong> Who should be featured on the Leadership page at launch?</li>
+                <li><strong>Case Studies:</strong> Are there historical projects we can feature?</li>
+                <li><strong>Technical Platform:</strong> Any preferences or existing relationships with web platforms?</li>
+                <li><strong>Timeline:</strong> Is the 6-week target realistic given current resources?</li>
+            </ol>
+        </section>
+
+        <section class="card">
+            <h2>Timeline Summary</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Week 1-2</h4>
+                    <p><strong>Foundation</strong></p>
+                    <p>Homepage, About, Contact, Capabilities</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Week 3-4</h4>
+                    <p><strong>Credibility</strong></p>
+                    <p>Compliance, Facilities, Target Vessels</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Week 5-6</h4>
+                    <p><strong>Authority</strong></p>
+                    <p>People/Careers, Case Studies, News</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Week 7+</h4>
+                    <p><strong>Optimization</strong></p>
+                    <p>SEO, speed, content updates</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Next Steps</h2>
+            <ul class="checklist">
+                <li>Circulate this document for stakeholder review</li>
+                <li>Schedule photography session</li>
+                <li>Finalize leadership bios</li>
+                <li>Select web platform</li>
+                <li>Begin Phase 1 content drafting</li>
+                <li>Set up hosting and domain</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>Document prepared for <strong>Gulf County Shipbuilding, Inc.</strong> revitalization initiative.</p>
+        <p style="margin-top: 1rem;">
+            <a href="https://gist.github.com/yourmaritimepartner/523c1996d8f6f6f7f42b422758da6a58">View Markdown Version</a>
+        </p>
+    </footer>
+</body>
+</html>
