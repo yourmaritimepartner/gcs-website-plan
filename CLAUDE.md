@@ -15,7 +15,7 @@ The website strategy supports dual revenue streams targeting federal contracting
 
 ### 1. Comprehensive Website Reboot Plan Document
 
-**Location:** `/Users/jd2025/pai/scratchpad/gcs-website-reboot-plan.md`
+**Location:** `/Users/jd2025/pai/history/projects/2025-12/gcs-website-reboot-plan.md`
 
 A 600+ line Markdown document containing:
 - Executive summary
@@ -60,7 +60,7 @@ A professionally styled HTML version with:
 | Secret Gist | **Active** | Share this link for review |
 | GitHub Pages | **Disabled** | Can re-enable when ready to go public |
 | Repository | **Public** | Contains HTML source code |
-| Scratchpad MD | **Local only** | Original Markdown source |
+| History MD | **Local only** | Original Markdown source (preserved) |
 
 ---
 
@@ -78,12 +78,12 @@ gh api repos/yourmaritimepartner/gcs-website-plan/pages -X DELETE
 
 ### Create new secret Gist (if needed)
 ```bash
-gh gist create /Users/jd2025/pai/scratchpad/gcs-website-reboot-plan.md -d "GCS Website Reboot Plan"
+gh gist create /Users/jd2025/pai/history/projects/2025-12/gcs-website-reboot-plan.md -d "GCS Website Reboot Plan"
 ```
 
 ### Create public Gist
 ```bash
-gh gist create /Users/jd2025/pai/scratchpad/gcs-website-reboot-plan.md --public -d "GCS Website Reboot Plan"
+gh gist create /Users/jd2025/pai/history/projects/2025-12/gcs-website-reboot-plan.md --public -d "GCS Website Reboot Plan"
 ```
 
 ---
